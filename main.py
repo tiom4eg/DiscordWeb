@@ -1,4 +1,5 @@
 import bcrypt
+import json
 from flask import *
 from data.user import User
 from data.salt import salt
@@ -23,7 +24,7 @@ def main():
 
 @app.route("/home")
 def home():
-    return render_template("main.html", title="Welcome!", text="home")
+    return render_template("main.html", title="Home", text="This is home page of Yandex.Lyceum project")
 
 
 @login_manager.user_loader
@@ -151,27 +152,25 @@ def review_delete(id):
 
 @app.route("/landing")
 def landing():
-    return render_template("main.html", title="Welcome!", text="landing")
+    return render_template("main.html", title="Landing", text="This is site of YL project. It's discord bot, written on python. Developers you can see on page <contacts>")
 
 
 @app.route("/commands")
 def commands():
-    return render_template("main.html", title="Welcome!", text="commands")
+    with open("static/commands.json") as file:
+        commands = json.load(file)
+    return render_template("main.html", title="Commands", attachments=commands, text="commands", type="commands")
 
 
 @app.route("/news")
 def news():
-    return render_template("main.html", title="Welcome!", text="news")
+    return render_template("main.html", title="News", text="This is page of news", attachments={"27.04.21": "release v. 1.0"}, type="news")
 
 
 @app.route("/contacts")
 def contacts():
-    return render_template("main.html", title="Welcome!", text="contacts")
-
-
-@app.route("/user_info")
-def user_info():
-    return render_template("main.html", title="Welcome!", text="user_info")
+    return render_template("main.html", title="Contacts", text="This is page of contacts", type="contacts", 
+        attachments={"bot": "https://github.com/tiom4eg", "site": "https://github.com/Ju5tNick"})
 
 
 if __name__ == '__main__':

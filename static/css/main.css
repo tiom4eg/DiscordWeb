@@ -17,6 +17,7 @@ li a {
 }
 
 .review {
+    margin: auto;
     border-radius: 10px;
     background-color: #553739;
     color: #FEFCFD;
@@ -25,13 +26,11 @@ li a {
     word-break: break-all;
     margin-top: 10px;
     max-width: 70%;
-    float: center;
 }
 
 .message {
     font-family: sans-serif;
     color: #FEFCFD;
-    padding-bottom: 3px;
     padding-bottom: 3px;
     color: red;
 }
@@ -60,6 +59,20 @@ textarea {
     padding: 10px;
     text-align: center;
     max-width: 40%;
+}
+
+.command {
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: #553739;
+    color: #232020;
+    padding: 5px;
+    border-right: 1px solid #553739;
+    color: #FEFCFD;
+    text-align: left;
+    word-break: break-all;
+    max-width: 70%;
 }
 
 .head {

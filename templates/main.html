@@ -1,5 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<h1>{{ text }}</h1>
+	{% if attachments %}
+		<div class="head">
+			<h1>This is page of {{ type }}</h1>
+		</div>
+		{% for elem in attachments %}
+			<div class="command">
+				<p>{{ elem }}: {{ attachments[elem] }}</p>
+			</div>
+		{% endfor %}
+	{% else %}
+		<div class="head">
+			<h1>{{ text }}</h1>
+		</div>
+	{% endif %}
 {% endblock %}
