@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="head">
+		<h1>This is page of reviews</h1>
+		{% if current_user.is_authenticated %}
+			<p>Please try to not offend anyone. <a href="/add_review" >Write a review</a></p>
+		{% else %}
+			<p>To write a review, please authorized here <a href="/login" >Login</a> or here <a href="/register" >Registration</a></p>
+		{% endif %}
+	</div>
+	{% block add_review %}{% endblock %}
+	{% for review in reviews %}
+		<div class="review">
+			<div class="user">
+				{% if current_user.nickname == coll[review.author]%}
+					<h5>You, {{ review.date.strftime("%d.%m.%Y") }} on {{ review.time.strftime("%H:%M:%S") }}</br>
+						<a href="/delete_review/{{ review.id }}" class="delete" >Delete</a><a href="/edit_review/{{ review.id }}" class="edit" >Edit</a></br></h5>
+				{% else %}
+					<h5>{{ coll[review.author] }}, {{ review.date.strftime("%d.%m.%Y") }} on {{ review.time.strftime("%H:%M:%S") }}</h5>
+				{% endif %}
+			</div>
+			<div class="content"><p>{{ review.content }}</p></div>
+		</div>
+	{% endfor %}
+{% endblock %}

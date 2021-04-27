@@ -1,0 +1,28 @@
+{% extends "review_log.html" %}
+
+{% block add_review %}
+    <form action="" method="post">
+    	<div class="new_review">
+
+            <div class="description">
+                {% if type == "new" %}
+                    <h1>Write review</h1>
+            	    {{ form.hidden_tag() }}
+                    {{ form.content.label }}
+                {% else %}
+                    <h1>Edit review</h1>
+                    {{ form.hidden_tag() }}
+                    <p>Edit your review here</p>
+                {% endif %}
+            </div>
+        	<p><br><textarea name="text">{{ content }}</textarea></p>
+            <p class="message">
+                {{ message }}
+            </p>
+            <p>
+        		{{ form.submit(type="submit", class="btn btn-primary") }}
+			    <a href="/reviews" class="btn btn-secondary">Cancel</a>
+       		</p>
+        </div>
+    </form>
+{% endblock %}
